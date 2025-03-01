@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
+
 
 @RestController  // Marks this class as a Controller
 @RequestMapping("/api")  // Base URL path for endpoints
@@ -38,5 +40,18 @@ class HelloController_PathVariable {
     @GetMapping("/param/{name}")
     public String sayHello(@PathVariable String name) {
         return "Hello " + name + " from BridgeLabz!";
+    }
+}
+
+
+
+@RestController
+@RequestMapping("/hello")
+class HelloControllerFirstLastName {
+
+    // POST API: localhost:8080/hello/post
+    @PostMapping("/post")
+    public String sayHello(@RequestBody UserDTO user) {
+        return "Hello " + user.getFirstName() + " " + user.getLastName() + " from BridgeLabz!";
     }
 }
